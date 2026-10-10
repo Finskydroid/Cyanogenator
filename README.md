@@ -1,20 +1,59 @@
 # Cyanogenator
 <img width="754" height="421" alt="image" src="https://github.com/user-attachments/assets/8df053c7-f059-414a-a110-b58d73e7682b" />
 
-*Read the readme.md before following the steps to understand everything!*
+*Read this whole page before you follow any steps, so you know where this is going.*
 
-Transform your phone into the classic, nostalgic CyanogenMod experience; I’ve put together this "instruction manual" based on my own experience and knowledge regarding the topics and tools covered.
+Transform your phone into the classic, nostalgic CyanogenMod experience. I put this "instruction manual" together from my own experience with the tools and procedures it covers, and I explain how things work along the way, so you are not just copying commands blindly.
 
-This guide is based on a specific version—though not one so obscure that you cannot easily replicate the setup. The most stable and tested version for this project is **LineageOS 19.1 GSI bvN (based on testing with the Samsung A31 4G, Brazilian variant, Android 12)**, which can be found in Andy Yan's SourceForge repository. While most people familiar with the Android world know this source, for those new to the scene, I will always provide the links at the end of the text.
+## Reference setup
 
-Sourceforge repository mentioned: https://sourceforge.net/projects/andyyan-gsi/
+Everything here was tested on one specific combination. It is not so obscure that you cannot replicate it:
 
-See? That’s how it’s going to be from now on; always read to understand the exact destination of the link *;)*
+- Device: Samsung Galaxy A31 4G, Brazilian variant
+- Stock firmware: Android 12
+- ROM: LineageOS 19.1 GSI bvN (LineageOS 19.1 is based on Android 12L), from Andy Yan's SourceForge repository: https://sourceforge.net/projects/andyyan-gsi/
+- Root: Magisk 30.7 with Zygisk enabled
+- Recovery: TWRP, when a compatible build exists for your device
 
-Community contributions are essential for improving compatibility and stability across different devices and software versions. Android devices can differ in many ways, including screen resolution, Android version, hardware architecture, and partition layout. Sometimes, even a single digit in a device model number can make all the difference.
+This is the most stable and tested version for the project. Most people who know the Android scene already know that SourceForge page. For anyone new, I will always give the links, and you should always read where a link goes before you open it ;)
 
-Always research your device before following the instructions. Understand its specific characteristics, check which modifications are compatible with it, and don't assume that a procedure tested on one device will work exactly the same way on another.
+## How the guide is organized
 
-Another important point is root access and system modification. Some steps in this guide require root privileges, and one of the key components of this setup is Magisk with Zygisk enabled. Root access allows us to install modules and apply certain modifications that would otherwise be unavailable, I'm currently using **Magisk version 30.7**, so the instructions and examples will be based on my setup. Modules may behave differently depending on your device, Android version, or configuration. If you encounter compatibility issues, unexpected behavior, or find a better solution, community feedback and contributions are welcome.
+1. [Stage 0: preparing the phone and flashing the base system](Setup_stage-0.md)
+2. [Stage 1: setting up the base (Magisk, Zygisk, LSPosed, first visual direction)](Create_stage-1.md)
+3. [Stage 2: personalizing (launcher and boot animation)](Personalize_stage-2.md)
+4. [Troubleshooting](Troubleshooting.md), for when something goes wrong. Read it before Stage 0, not after.
 
-This project is **my technical documentation of the tools, procedures, and results I've personally worked with**. I'm sharing what I've learned, explaining how things work along the way, and leaving room for the community to test, troubleshoot, improve, and expand upon it.
+If your phone already runs a GSI with root, you can skip Stage 0. If you have never flashed anything, read every stage in order.
+
+## Before you start
+
+Be honest with yourself about the risks:
+
+- Unlocking the bootloader wipes the phone. On Samsung it also trips Knox permanently. After that, Samsung Pay and Secure Folder stop working, and your warranty may be affected.
+- A wrong flash can leave the phone in a bootloop or bricked. Most of these cases are recoverable with stock firmware, but lost IMEI and modem data are not, unless you backed them up first.
+- Do not do this on your only phone.
+
+## Know your device
+
+Community contributions are essential for improving compatibility and stability across devices and software versions. Android devices differ in screen resolution, Android version, hardware architecture and partition layout. Sometimes a single digit in a model number makes all the difference.
+
+Research your device before following the instructions. Learn its specifics, check which modifications are compatible with it, and do not assume a procedure tested on one device works the same way on another.
+
+## Root and system modification
+
+Some steps require root. One of the key pieces of this setup is Magisk with Zygisk enabled, which lets us install modules and apply modifications that are otherwise unavailable. I am currently on Magisk 30.7, so the instructions and examples follow that version. Modules can behave differently depending on your device, Android version and configuration. If you hit a compatibility problem or find a better solution, tell me.
+
+## Contributing
+
+This project is my technical documentation of the tools, procedures and results I have personally worked with. I am sharing what I learned and leaving room for the community to test, troubleshoot, improve and expand it.
+
+If you open an issue or a pull request, include your device model, Android version, ROM build and Magisk version. Without those, nobody can tell whether your result applies to anyone else.
+
+## Status
+
+Stages 0 to 2 are written. The visual side is still being expanded: icon pack, home screen layout, wallpapers and sounds will come in the next stages.
+
+## License
+
+GPL-3.0, see [LICENSE](LICENSE).
