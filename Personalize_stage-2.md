@@ -23,14 +23,10 @@ Two precautions, since this is a zip from a third party:
 - Open it on your computer before installing. A boot animation module should contain a `module.prop` and a `bootanimation.zip` and not much else.
 - Know how to undo it before you install it. If the phone ever loops on the boot logo after a module, [Troubleshooting](Troubleshooting.md) shows how to remove modules without wiping anything.
 
-## 3. Icons and wallpaper
-
-With the launcher and boot animation done, the home screen is the next thing to fix. In Nova's settings, you can apply an icon pack and pick a wallpaper that matches the accent color you chose in Stage 1. The details of the icon pack and the home screen layout will get their own stage.
-
 ## Checkpoint
 
 - Nova is the default launcher and survives a reboot.
 - Trebuchet is still installed.
 - The CM7 boot animation plays on startup.
 
-Next: more of the visual side, coming in a later stage.
+Next: [Stage 3](Design_stage-3.md).
