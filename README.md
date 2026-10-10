@@ -13,21 +13,32 @@ The look is a mix I chose by taste, not a replica of any single CyanogenMod or A
 
 Everything here was tested on one specific combination. It is not so obscure that you cannot replicate it:
 
-**Device: Samsung Galaxy A31 4G, Brazilian variant
-Stock firmware: Android 12
-ROM: LineageOS 19.1 GSI bvN (LineageOS 19.1 is based on Android 12L), from Andy Yan's SourceForge repository: https://sourceforge.net/projects/andyyan-gsi/
-Root: Magisk 30.7 with Zygisk enabled
-Recovery: TWRP, when a compatible build exists for your device**
+**Device: Samsung Galaxy A31 4G, Brazilian variant**
+
+**Stock firmware: Android 12**
+
+**ROM: LineageOS 19.1 GSI bvN (LineageOS 19.1 is based on Android 12L), from Andy Yan's SourceForge repository:** 
+*https://sourceforge.net/projects/andyyan-gsi/*
+
+**Root: Magisk 30.7 with Zygisk enabled**
+
+**Recovery: TWRP, when a compatible build exists for your device**
 
 This is the most stable and tested version for the project. Most people who know the Android scene already know that SourceForge page. For anyone new, I will always give the links, and you should always read where a link goes before you open it ;)
 
-**How the guide is organized
-Stage 0: preparing the phone and flashing the base system
-Stage 1: setting up the base (Magisk, Zygisk, LSPosed, first visual direction)
-Stage 2: personalizing (launcher and boot animation)
-Stage 3: design direction (palette, icons, drawer, font, live wallpaper)
-Stage 4: system interface (Iconify and the navigation bar)
-Troubleshooting, for when something goes wrong. Read it before Stage 0, not after.**
+**How the guide is organized**
+
+**Stage 0: preparing the phone and flashing the base system**
+
+**Stage 1: setting up the base (Magisk, Zygisk, LSPosed, first visual direction)**
+
+**Stage 2: personalizing (launcher and boot animation)**
+
+**Stage 3: design direction (palette, icons, drawer, font, live wallpaper)**
+
+**Stage 4: system interface (Iconify and the navigation bar)**
+
+**Troubleshooting, for when something goes wrong. Read it before Stage 0, not after.**
 
 If your phone already runs a GSI with root, you can skip Stage 0. If you have never flashed anything, read every stage in order.
 
@@ -35,11 +46,15 @@ Files used in this guide
 
 Everything below is hosted in one SourceForge folder: https://sourceforge.net/projects/cyanogenmodder/files/
 
-CM7BOOTANIM.zip: CyanogenMod 7 boot animation, a Magisk module (Stage 2)
-AndroidLollipopIconPack.apk: Lollipop-style icon pack (Stage 3)
-Wind.apk: live wallpaper (Stage 3)
-Iconify.apk: system interface customization (Stage 4)
-Navbar.zip: customized navigation bar, a Magisk module (Stage 4)
+**CM7BOOTANIM.zip: CyanogenMod 7 boot animation, a Magisk module (Stage 2)**
+
+**AndroidLollipopIconPack.apk: Lollipop-style icon pack (Stage 3)**
+
+**Wind.apk: live wallpaper (Stage 3)**
+
+**Iconify.apk: system interface customization (Stage 4)**
+
+**Navbar.zip: customized navigation bar, a Magisk module (Stage 4)**
 
 Some of these are APKs and modules from other projects, re-hosted here so the guide keeps working. Each stage links to its file, and you should always check the original project's page too.
 
