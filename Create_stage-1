@@ -1,7 +1,7 @@
 1. Setting Up LineageOS and First Impressions
 
 Once LineageOS is up and running, you'll be greeted by its initial setup process. At some point, it may offer to install Lineage Recovery. 
-**For this setup, stick with TWRP if you already have a compatible version installed and working.** Recovery compatibility depends on your device and partition layout, so don't replace a working recovery without checking first.
+For this setup, stick with TWRP if you already have a compatible version installed and working. Recovery compatibility depends on your device and partition layout, so don't replace a working recovery without checking first.
 
 After completing the initial setup, enable Developer Options and turn on **USB debugging**. We'll need it for some of the tools and modifications covered later in this guide.
 
@@ -10,7 +10,7 @@ After completing the initial setup, enable Developer Options and turn on **USB d
 If Magisk is already installed, open it and check whether it needs any additional setup. Depending on how you rooted your device, you may see a prompt to complete the installation. 
 Follow the instructions displayed by Magisk and reboot if required.
 
-Once Magisk is working, open its settings and enable **Zygisk** if your setup supports it. Grant superuser access only to apps and tools that actually need it. 
+Once Magisk is working, open its settings and enable Zygisk if your setup supports it. Grant superuser access only to apps and tools that actually need it. 
 Root is powerful, so don't hand out permissions blindly.
 
 3. Installing LSPosed
