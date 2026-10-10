@@ -1,62 +1,81 @@
-You will need to flash LineageOS onto your phone—preferably a GSI, even if it doesn't make a huge difference. 
-Most phones are compatible with Project Treble; check if yours is too. If you are uncomfortable with this sort of thing or have already flashed it, skip this step; 
-it is intended solely for those who aren't very familiar with the open Android ecosystem.
+# Stage 0: preparing the phone and flashing the base system
 
-1. Preparing Your Device
+You will need to flash LineageOS onto your phone, preferably as a GSI (Generic System Image), even if it doesn't make a huge difference. Most phones are compatible with Project Treble, so check if yours is too. If you have already flashed a GSI and have root, skip to [Stage 1](Create_stage-1.md). This stage is for people who aren't very familiar with the open Android ecosystem, so read it slowly.
 
-Before we can start customizing Android, we need to prepare the device to accept unofficial firmware and system modifications. This usually means unlocking the bootloader, 
-obtaining root access, and installing a custom recovery when one is available and compatible with your device.
+## 0. Before you touch anything
 
-2. Unlocking the Bootloader
+Do these first. Every one of them is annoying to discover afterwards.
 
-Start by enabling Developer Options. Open your phone's settings, find Build number, and tap it seven times. You'll unlock a new section in the settings menu.
+- Write down your exact model number and region (Settings → About phone). Firmware, recovery and GSI choices all depend on it.
+- Install an app like Treble Info and check three things: that Treble is supported, the architecture (usually arm64), and the partition layout (A-only or A/B, and whether the device uses dynamic partitions). These decide which GSI image you download. Dynamic partitions can also be checked over ADB with `adb shell getprop ro.boot.dynamic_partitions`.
+- Back up your data. The next step wipes the phone.
+- Back up your IMEI and modem data. On MediaTek devices, such as the A31, that usually means the nvram, nvdata and protect partitions. Research a backup method that works for your chipset and model, because losing the IMEI can leave you without a signal and it is hard to undo.
+- Charge the battery above 50%, use a good cable, and download the stock firmware for your exact model and region now, in case you need it for recovery later.
 
-Open Developer Options and look for OEM unlocking. If your device supports bootloader unlocking, enable it and follow the instructions specific to your model. On Samsung devices, unlocking the bootloader 
-requires entering Download Mode and confirming the unlock. This process wipes your data, so back up anything you want to keep before proceeding.
+## 1. Unlocking the bootloader
+
+Start by enabling Developer Options. Open Settings, find Build number and tap it seven times. A new section appears in the menu.
+
+Open Developer Options and look for OEM unlocking. If your device supports bootloader unlocking, enable it and follow the instructions for your model. On Samsung, unlocking means entering Download Mode and confirming the unlock there. This wipes your data.
+
+Two things catch people out:
+
+- On some Samsung devices the OEM unlocking toggle is missing or greyed out, usually for a while after the first setup. Connecting to Wi-Fi with an account signed in and waiting (it can take up to 7 days) is the usual way out. Check what applies to your model.
+- Unlocking trips Knox permanently. It cannot be reverted, so decide before you confirm.
 
 Keep in mind that some devices and regional variants restrict bootloader unlocking entirely. Research your exact model before continuing.
-Getting Root Access with Magisk
 
-For this guide, we'll use Magisk to patch the stock firmware and obtain root access. The procedure described here 
-is for compatible Samsung devices; other manufacturers may require a completely different approach.
+## 2. Getting root with Magisk
 
-First, download the stock firmware matching your exact device model and region. Firmware packages usually contain several files, including BL, AP, CP, and CSC. 
-The one we'll need for Magisk is the AP file, typically named something like AP_[firmware-version].tar.md5.
+For this guide we use Magisk to patch the stock firmware and obtain root. The procedure below is for compatible Samsung devices. Other manufacturers may need a completely different approach. Magisk's own [installation page](https://topjohnwu.github.io/Magisk/install.html) has a Samsung section, so read it too.
 
-Install the Magisk app, copy the AP file to your phone, and open Magisk. Select Install → Select and Patch a File, 
-then choose the AP package. Magisk will generate a patched firmware archive.
+First, download the stock firmware that matches your exact model and region. The package contains several files: BL, AP, CP and CSC. The one we need for Magisk is AP, typically named something like `AP_[firmware-version].tar.md5`.
 
-Once the patching process finishes, transfer the resulting file back to your computer. Magisk's official documentation recommends 
-using ADB to transfer the patched archive, as MTP can corrupt large files.
+Install the Magisk app and copy the AP file to your phone. Open Magisk and select Install → Select and Patch a File, then choose the AP package. Magisk generates a patched archive.
 
-Next, use Odin to flash the patched firmware. Load the patched archive into the AP slot and follow the appropriate instructions for your device, 
-including any required firmware components and reset procedures. Odin is Samsung-specific; Linux users may need a compatible alternative such as Heimdall, depending on device support.
+When the patching finishes, bring the result back to your computer. Magisk's documentation recommends ADB for this (`adb pull`), because MTP can corrupt large files.
 
-Important: Flashing the patched archive is not, by itself, a universal guarantee that root access is ready to use. 
-Some Samsung devices require additional setup or a particular recovery boot sequence. Follow the instructions for your exact model, then open Magisk and verify that the installation is complete.
+Then flash with Odin. Put the patched archive in the AP slot and load the matching BL and CP files. For CSC, use the CSC file, not HOME_CSC, so the phone does a clean factory reset. Odin is Samsung-specific and runs on Windows. On Linux, Heimdall has poor support for newer Samsung devices, and people usually report better luck with alternatives such as Odin4 or Thor. Test whatever you pick before you rely on it.
 
-3. Installing a Custom Recovery
+Important: flashing the patched archive is not, by itself, a guarantee that root is ready to use. Some Samsung devices keep Magisk in the recovery partition instead of boot, and they need a specific recovery boot sequence to start with root. If the Magisk app offers a Recovery Mode option when patching, your device is probably one of those. Follow the instructions for your exact model, then open Magisk and check that the installation is complete.
 
-A custom recovery such as TWRP can provide additional tools for installing firmware, managing partitions, and troubleshooting your device. However, 
-not every device has a compatible recovery, and the installation process varies between models.
+## 3. Installing a custom recovery
 
-Check the official TWRP device list and download files only for your exact device variant. 
-Some devices require additional preparation before TWRP can boot correctly, so don't assume that flashing a .tar file through Odin is all it takes.
+A custom recovery such as TWRP gives you tools to install firmware, manage partitions and troubleshoot. Not every device has a compatible recovery, and the process varies between models.
 
-For Samsung devices, Download Mode is commonly accessed by powering off the phone, connecting it to a computer with a USB cable while holding both volume buttons, and following the on-screen instructions. The exact procedure can vary by model.
+Check the official TWRP device list at https://twrp.me/Devices/ and download files only for your exact device variant. Some devices need extra preparation before TWRP can boot correctly, so do not assume that flashing a `.tar` through Odin is all it takes.
 
-If your device requires Odin, select the correct recovery package in the AP slot and follow the device-specific installation instructions. 
-Some procedures require Auto Reboot to be disabled so that you can boot directly into recovery after flashing. Others differ, so check the instructions before proceeding.
+On Samsung, Download Mode is usually reached by powering off, connecting the phone to a computer by USB while holding both volume buttons, and following the on-screen instructions. The exact procedure can vary by model.
 
-4. Choosing Your Android Build
+If your device needs Odin, select the recovery package in the AP slot and follow the device-specific instructions. Some procedures require Auto Reboot to be disabled so that you can boot straight into recovery after flashing. Others differ, so check before you proceed.
+
+One conflict to watch for: if Magisk lives in your recovery partition (see the previous step), flashing TWRP over it removes Magisk. In that case, install Magisk again after TWRP, and confirm root before you go on.
+
+## 4. Choosing your Android build
 
 Now we're getting somewhere.
 
-Download the LineageOS image you intend to use. If your device supports Project Treble, a compatible Generic System Image (GSI) may be an option. 
-If it doesn't, look for a custom ROM built specifically for your device.
+Download the LineageOS image you intend to use. If your device supports Project Treble, a compatible GSI may be an option. If it doesn't, look for a custom ROM built specifically for your device.
 
-For this project, the main reference setup is LineageOS 19.1 GSI bvN, tested on the Brazilian Samsung Galaxy A31 4G variant. 
-Your mileage may vary depending on your device, firmware, partition layout, and hardware support.
+For this project, the reference setup is LineageOS 19.1 GSI bvN, tested on the Brazilian Samsung Galaxy A31 4G. The letters at the end of a GSI's file name describe the build variant, so read the notes in the SourceForge folder to confirm that the one you pick matches your architecture and partition layout. Your mileage may vary depending on your device, firmware and hardware support.
 
-If none of these options are compatible with your device, stock ROMs are outside the scope of this guide. 
-That doesn't mean you're out of luck, though — someone in the community might know a workaround. ;)
+If none of these options is compatible with your device, stock ROMs are outside the scope of this guide. That doesn't mean you're out of luck, though. Someone in the community might know a workaround ;)
+
+## 5. Flashing the GSI
+
+This is the step that replaces the stock system. Read all of it before you start.
+
+1. Decompress the image. GSIs download as `.img.xz`. On Linux, `unxz name.img.xz` gives you `name.img`. On Windows, 7-Zip does the same.
+2. Disable verified boot. Samsung's stock AP includes a `vbmeta` image, and a GSI will not boot with verification enabled. You need a vbmeta with verification disabled, flashed through Odin (packed as a `.tar`) or, on devices that support it, through fastboot with `fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img`.
+3. Boot into TWRP and format data: Wipe → Format Data, then type `yes`. This erases everything and clears the old encryption.
+4. Flash the system image. In TWRP, go to Install → Install Image, pick the `.img` and choose the System partition.
+5. Reboot to system. The first boot takes longer than normal, so give it a few minutes.
+6. Open the Magisk app again. The system changed, so the app from the stock install is gone. Reinstall it, then check that root still works. If it doesn't, patch and flash again before you continue.
+
+If your device uses dynamic partitions, the system partition is not flashed like a normal partition, and TWRP may not handle it. In that case the usual route is fastbootd: reboot with `adb reboot fastboot`, then `fastboot flash system name.img`. Confirm that this works on your model before you wipe anything.
+
+## 6. First boot
+
+When the phone boots into LineageOS, Stage 0 is done. If it sits on the boot logo for more than about ten minutes, or restarts in a loop, go to [Troubleshooting](Troubleshooting.md).
+
+Next: [Stage 1](Create_stage-1.md).
