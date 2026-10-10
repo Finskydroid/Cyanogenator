@@ -1,20 +1,36 @@
-1. Changing the Launcher
+# Stage 2: personalizing
 
-LineageOS comes with its own home screen launcher, Trebuchet, based on Android's Launcher3. It handles your home screen, app drawer, and shortcuts. 
-We'll be replacing it with Nova Launcher, which offers far more control over the layout and appearance of your setup.
-Download Nova Launcher from an official or otherwise trusted source and transfer the APK to your phone if necessary. 
-Nova has offered paid premium features, but you don't need to hunt down a cracked APK to get started. Use the version available to you and decide whether its extra features are worth paying for.
+The base is ready, so now we start changing how the phone looks and feels.
 
-One important detail: setting Nova as your default launcher doesn't mean you should immediately remove Trebuchet. 
-Some system components may depend on the stock launcher, so keep it installed until you've tested Nova thoroughly, including after rebooting.
+## 1. Changing the launcher
 
-2. A Little CyanogenMod Nostalgia
+LineageOS comes with its own home screen launcher, Trebuchet, based on Android's Launcher3. It handles your home screen, app drawer and shortcuts. We'll replace it with Nova Launcher, which gives you far more control over the layout and appearance of your setup.
 
-Before we start rearranging icons and widgets, let's change something you'll see every time you turn on your phone: the boot animation. 
-A boot animation is the sequence of images or video-like frames Android displays while the system starts. With a compatible Magisk module, you can replace the 
-default animation with the classic CyanogenMod 7 boot animation without manually modifying the system partition.
+Download Nova Launcher from an official or otherwise trusted source and transfer the APK to your phone if necessary. Nova has offered paid premium features, so use the version available to you and decide whether the extras are worth paying for. Keep in mind that Nova is closed source. If you prefer a fully open source launcher, Lawnchair offers similar control, and everything in this guide that concerns the layout works the same way.
 
-Install the module from a trusted source using Magisk, then reboot to see the result. Depending on your device and the animation, startup might appear to take a little longer. 
-That's a small price to pay for bringing back a bit of that old-school Android character. ;)
+One important detail: setting Nova as your default launcher doesn't mean you should remove Trebuchet right away. Some system components may depend on the stock launcher, so keep it installed until you've tested Nova thoroughly, including after a reboot.
 
-https://sourceforge.net/projects/cyanogenmodder/files/CM7BOOTANIM.zip/download
+## 2. A little CyanogenMod nostalgia
+
+Before we start rearranging icons and widgets, let's change something you'll see every time you turn on your phone: the boot animation. A boot animation is the sequence of images Android displays while the system starts. With a compatible Magisk module, you can replace the default one with the classic CyanogenMod 7 boot animation without manually modifying the system partition.
+
+The module is here: https://sourceforge.net/projects/cyanogenmodder/files/CM7BOOTANIM.zip/download
+
+To install it, open Magisk, go to Modules, choose Install from storage, and select the zip. Reboot to see the result. Depending on your device and the animation, startup might appear to take a little longer. That's a small price to pay for bringing back a bit of that old-school Android character ;)
+
+Two precautions, since this is a zip from a third party:
+
+- Open it on your computer before installing. A boot animation module should contain a `module.prop` and a `bootanimation.zip` and not much else.
+- Know how to undo it before you install it. If the phone ever loops on the boot logo after a module, [Troubleshooting](Troubleshooting.md) shows how to remove modules without wiping anything.
+
+## 3. Icons and wallpaper
+
+With the launcher and boot animation done, the home screen is the next thing to fix. In Nova's settings, you can apply an icon pack and pick a wallpaper that matches the accent color you chose in Stage 1. The details of the icon pack and the home screen layout will get their own stage.
+
+## Checkpoint
+
+- Nova is the default launcher and survives a reboot.
+- Trebuchet is still installed.
+- The CM7 boot animation plays on startup.
+
+Next: more of the visual side, coming in a later stage.
