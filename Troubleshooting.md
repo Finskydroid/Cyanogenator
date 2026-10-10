@@ -24,6 +24,16 @@ Then reboot. Remember which module caused it, and don't install it again.
 
 After flashing a GSI, the Magisk app from the stock system is gone and may need to be installed again. Reinstall the app, then check what it reports. If it says no root, patch the stock AP again, or on devices that keep Magisk in recovery, boot with the recovery key sequence for your model. If you flashed TWRP over a recovery that held Magisk, that is the cause.
 
+## System UI crashes or the navigation bar disappears after Iconify or a navbar module
+
+Undo the last change first. If you can still reach the settings, disable it from Iconify. If you can't navigate, use ADB:
+
+- `adb shell cmd overlay list` lists the overlays installed on the phone.
+- `adb shell cmd overlay disable <package>` disables one. Start with the overlays from the last change you made.
+- If that is not enough, `adb wait-for-device shell magisk --remove-modules` removes every Magisk module, and TWRP can delete a single module folder from `/data/adb/modules/`.
+
+Reboot and check before you try anything else.
+
 ## ADB doesn't see the phone
 
 - Check that USB debugging is on and that you accepted the authorization prompt on the phone.
