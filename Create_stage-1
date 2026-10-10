@@ -3,7 +3,7 @@
 Once LineageOS is up and running, you'll be greeted by its initial setup process. At some point, it may offer to install Lineage Recovery. 
 For this setup, stick with TWRP if you already have a compatible version installed and working. Recovery compatibility depends on your device and partition layout, so don't replace a working recovery without checking first.
 
-After completing the initial setup, enable Developer Options and turn on **USB debugging**. We'll need it for some of the tools and modifications covered later in this guide.
+After completing the initial setup, enable Developer Options and turn on USB debugging. We'll need it for some of the tools and modifications covered later in this guide.
 
 2. Getting Magisk Ready
 
@@ -18,7 +18,7 @@ Root is powerful, so don't hand out permissions blindly.
 LSPosed provides a framework for running modules that modify certain aspects of Android. It is optional unless a later step in this guide specifically depends on it.
 
 Before installing anything, check that the LSPosed release is compatible with your Android version, Magisk installation, and device architecture. 
-Download the appropriate module from its official project source, install it through Magisk's **Modules** section, and reboot if instructed.
+Download the appropriate module from its official project source, install it through Magisk's Modules section, and reboot if instructed.
 
 Once the device starts again, check that LSPosed is active before proceeding. If it doesn't show up or fails to initialize, 
 troubleshoot that first instead of stacking more modifications on top of a broken setup.
