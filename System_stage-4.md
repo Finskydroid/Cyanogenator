@@ -40,9 +40,44 @@ If you also use navigation options inside Iconify, install one at a time. Two to
 
 If the navigation bar disappears, the status bar glitches or System UI keeps crashing after a change, undo the last change first. [Troubleshooting](Troubleshooting.md) explains how to disable the overlays or remove the module over ADB.
 
-## Checkpoint
+## 3. Replacing the Stock Apps
 
-- The phone boots normally after each change.
-- Quick settings tiles and sliders have the style you picked.
-- The navigation bar works and looks the way you expect.
-- You know which change you made last, in case you need to undo it.
+We've taken care of the launcher's appearance and brought back a piece of CyanogenMod history. Now it's time to work on the functional side of the system.
+
+LineageOS includes a collection of default apps, but we're not obligated to keep using all of them. For this stage, we'll replace several of those apps with independent, open-source alternatives. The goal is to find tools that fit the Cyanogenator's overall look and feel while remaining practical for everyday use.
+
+Here are the apps we'll be using:
+
+| Default function | Replacement |
+|---|---|
+| Phone / Dialer | **Amadz** |
+| File manager | **Amaze File Manager** |
+| Gallery | **Aves Libre** |
+| Calculator | **CalcYou** |
+| Clock | **Clock You** |
+| App store | **F-Droid Classic** or **Aurora Store** |
+| Web browser | **Lightning Browser** |
+| YouTube client | **NewPipe** |
+| Camera | **Open Camera** |
+
+### A Few Things Before We Begin
+
+Install and test each replacement before disabling its original counterpart. Some Android apps provide functionality that goes beyond their visible interface, and replacing an app doesn't necessarily replace every system component associated with it.
+
+This is particularly important for the phone app, camera, and file picker. Keep the original system components enabled until you've confirmed that calls, camera access, file selection, and other relevant functions still work correctly.
+
+A few notes about our choices:
+
+- **Amadz** will be our alternative dialer. Test incoming and outgoing calls, SIM selection, and call notifications before changing the default phone app.
+- **Amaze File Manager** handles everyday file management. Keep Android's system document picker enabled, since other apps may rely on it.
+- **Aves Libre** will handle browsing and organizing your photos and videos.
+- **CalcYou** replaces the standard calculator with an open-source alternative.
+- **Clock You** provides the clock and alarm interface.
+- **F-Droid Classic** and **Aurora Store** serve different purposes. F-Droid provides access to its own catalog of free and open-source apps, while Aurora Store is an unofficial client for the Google Play catalog. Aurora still depends on Google's servers, so choose according to what you need.
+- **Lightning Browser** gives us an alternative to the default browser.
+- **NewPipe** provides an alternative YouTube experience without requiring the official YouTube app.
+- **Open Camera** replaces the camera interface for everyday photography, although some device-specific camera features may not be available.
+
+Once everything is installed and tested, you can decide which original apps to leave in place and which ones you no longer need. There's no need to remove every stock app just for the sake of it.
+
+The important part is that your phone starts feeling like a coherent, customized Android setup rather than a collection of unrelated apps.
