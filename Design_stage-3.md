@@ -36,7 +36,8 @@ Values:
 - Icon pack: [AndroidLollipopIconPack.apk](https://sourceforge.net/projects/cyanogenmodder/files/AndroidLollipopIconPack.apk/download). Install it like any APK, then apply it from your launcher's icon settings.
 - Nova Launcher: choose the Android 7.1 icon style. This turns off the automatic round shape.
 
-<!-- TODO(snow): confirm the exact menu name of the 7.1 option in Nova, and the equivalent (or lack of one) in Lawnchair. -->
+*warning: If you don't like it or the icon pack doesn't work well for you, you can try KAIP; it's available for free on Aptoide.*
+*Link: https://kaip.en.aptoide.com/app*
 
 If the icons on your home screen don't match the pack's preview, a shape or normalization option is still on.
 
