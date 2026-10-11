@@ -23,10 +23,4 @@ Two precautions, since this is a zip from a third party:
 - Open it on your computer before installing. A boot animation module should contain a `module.prop` and a `bootanimation.zip` and not much else.
 - Know how to undo it before you install it. If the phone ever loops on the boot logo after a module, [Troubleshooting](Troubleshooting.md) shows how to remove modules without wiping anything.
 
-## Checkpoint
-
-- Nova is the default launcher and survives a reboot.
-- Trebuchet is still installed.
-- The CM7 boot animation plays on startup.
-
 Next: [Stage 3](Design_stage-3.md).
