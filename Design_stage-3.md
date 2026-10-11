@@ -70,11 +70,4 @@ The live wallpaper I use with this setup is Wind: [Wind.apk](https://sourceforge
 
 A live wallpaper keeps drawing in the background, so it costs some battery. If that bothers you, keep a static wallpaper in the same accent color instead.
 
-## Checkpoint
-
-- The accent color is the same in the system and the launcher.
-- Icons match the pack's preview, with no round mask.
-- The drawer is white, with square corners.
-- Fonts are consistent between the system and the launcher.
-
-Next: [Stage 4](System_stage-4.md).
+**Next: [Stage 4](System_stage-4.md).**
