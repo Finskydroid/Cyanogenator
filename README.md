@@ -1,89 +1,114 @@
 # Cyanogenator
-<img width="754" height="421" alt="image" src="https://github.com/user-attachments/assets/8df053c7-f059-414a-a110-b58d73e7682b" />
 
-*Read this whole page before you follow any steps, so you know where this is going.*
+<img width="754" height="421" alt="Cyanogenator interface preview" src="https://github.com/user-attachments/assets/8df053c7-f059-414a-a110-b58d73e7682b" />
 
-Transform your phone into the classic, nostalgic CyanogenMod experience. I put this "instruction manual" together from my own experience with the tools and procedures it covers, and I explain how things work along the way, so you are not just copying commands blindly.
+Read the full guide before following any of the instructions. Some steps depend on earlier modifications, and skipping them without understanding the setup can cause problems.
 
-## About the look
+Cyanogenator is a collection of instructions, tools and customizations for recreating the look and feel of classic Android, with CyanogenMod as its main reference. The guide documents the procedures I have tested, the tools involved and the configuration used during development.
 
-The look is a mix I chose by taste, not a replica of any single CyanogenMod or Android version. The boot animation is CyanogenMod 7's, the icons follow Lollipop, and the rest follows the same direction. Change whatever you want to match your own taste.
+It is a customization project, not a custom ROM. The instructions use an existing Android system as their base.
+
+## Design
+
+The visual style combines elements from different Android generations. The boot animation comes from CyanogenMod 7, the icon style follows Lollipop, and the rest of the interface is customized around that direction.
+
+The setup is not intended to reproduce a specific CyanogenMod release exactly. Individual elements can be replaced to suit your preferences.
 
 ## Reference setup
 
-Everything here was tested on one specific combination. It is not so obscure that you cannot replicate it:
+The procedures were tested primarily on the following configuration:
 
-**Device: Samsung Galaxy A31 4G, Brazilian variant**
+- **Device:** Samsung Galaxy A31 4G, Brazilian variant
+- **Stock firmware:** Android 12
+- **ROM:** LineageOS 19.1 GSI, arm64 bvN, from Andy Yan's SourceForge repository
+- **Root:** Magisk 30.7 with Zygisk enabled
+- **Recovery:** TWRP, where a compatible build is available
 
-**Stock firmware: Android 12**
+LineageOS 19.1 is based on Android 12. The reference GSI is available from [Andy Yan's SourceForge repository](https://sourceforge.net/projects/andyyan-gsi/).
 
-**ROM: LineageOS 19.1 GSI bvN (LineageOS 19.1 is based on Android 12L), from Andy Yan's SourceForge repository:** 
-*https://sourceforge.net/projects/andyyan-gsi/*
+Other devices, GSIs and custom ROMs may work, but compatibility depends on the device, Android version, partition layout and available modifications. The reference setup is the environment used to test the instructions, not a guarantee that every step will work elsewhere.
 
-**Root: Magisk 30.7 with Zygisk enabled**
+## Guide structure
 
-**Recovery: TWRP, when a compatible build exists for your device**
+The documentation is divided into stages. Follow them in order unless you already have the required setup.
 
-This is the most stable and tested version for the project. Most people who know the Android scene already know that SourceForge page. For anyone new, I will always give the links, and you should always read where a link goes before you open it ;)
+- **Stage 0 — Setup:** prepare the device and flash the base system.
+- **Stage 1 — Base configuration:** configure Magisk, Zygisk and LSPosed, and establish the initial customization setup.
+- **Stage 2 — Personalization:** configure the launcher and boot animation.
+- **Stage 3 — Design:** apply the color palette, icons, app drawer, font and live wallpaper.
+- **Stage 4 — System interface:** configure Iconify and the navigation bar.
+- **Troubleshooting:** consult this section before starting Stage 0 and whenever a procedure fails.
 
-**How the guide is organized**
+If your device already runs a compatible GSI with root access, some of Stage 0 may not be necessary. Check the prerequisites of each stage before skipping any steps.
 
-**Stage 0: preparing the phone and flashing the base system**
+## Files
 
-**Stage 1: setting up the base (Magisk, Zygisk, LSPosed, first visual direction)**
+The files used by the guide are hosted in the [Cyanogenator files directory on SourceForge](https://sourceforge.net/projects/cyanogenmodder/files/).
 
-**Stage 2: personalizing (launcher and boot animation)**
+| File | Purpose |
+|---|---|
+| `CM7BOOTANIM.zip` | CyanogenMod 7 boot animation, installed as a Magisk module |
+| `AndroidLollipopIconPack.apk` | Lollipop-style icon pack |
+| `Wind.apk` | Live wallpaper |
+| `Iconify.apk` | System interface customization |
+| `Navbar.zip` | Customized navigation bar, installed as a Magisk module |
 
-**Stage 3: design direction (palette, icons, drawer, font, live wallpaper)**
+Some files originate from other projects and are hosted here for use with the guide. Check the original project's documentation and compatibility information before installing them. Refer to the relevant stage for the instructions associated with each file.
 
-**Stage 4: system interface (Iconify and the navigation bar)**
+## Before you start
 
-**Troubleshooting, for when something goes wrong. Read it before Stage 0, not after.**
+### Risks
 
-If your phone already runs a GSI with root, you can skip Stage 0. If you have never flashed anything, read every stage in order.
+Unlocking the bootloader usually erases user data. On Samsung devices, it can permanently trip Knox, affecting features such as Secure Folder and Samsung Pay. Warranty implications depend on the device and applicable terms.
 
-Files used in this guide
+Incorrect images, incompatible modules or interrupted flashing procedures can leave the device unable to boot. Some problems can be resolved by restoring stock firmware, but this is not guaranteed. Damage to or loss of important data, including modem-related data, can be difficult or impossible to recover.
 
-Everything below is hosted in one SourceForge folder: https://sourceforge.net/projects/cyanogenmodder/files/
+Back up your data before making changes. Do not rely on this guide as your only recovery plan, especially if the device is your primary phone.
 
-**CM7BOOTANIM.zip: CyanogenMod 7 boot animation, a Magisk module (Stage 2)**
+### Device compatibility
 
-**AndroidLollipopIconPack.apk: Lollipop-style icon pack (Stage 3)**
+Android devices differ in hardware, screen resolution, system version, partition layout and bootloader behavior. Even devices from the same product family can require different procedures.
 
-**Wind.apk: live wallpaper (Stage 3)**
+Check the exact model number and research the compatibility of each modification before applying it. A procedure tested on the reference device may behave differently on another device.
 
-**Iconify.apk: system interface customization (Stage 4)**
+### Root and system modifications
 
-**Navbar.zip: customized navigation bar, a Magisk module (Stage 4)**
+Some steps require root access. The reference setup uses Magisk 30.7 with Zygisk enabled to support modules and modifications that require elevated privileges.
 
-Some of these are APKs and modules from other projects, re-hosted here so the guide keeps working. Each stage links to its file, and you should always check the original project's page too.
+Module compatibility depends on the Android version, device and system configuration. Do not assume that a module working on the reference setup will work on every GSI or custom ROM.
 
-Before you start
-## Be honest with yourself about the risks:
+If you encounter a problem, document the device model, Android version, ROM build, Magisk version and the steps that led to the issue.
 
-Unlocking the bootloader wipes the phone. On Samsung it also trips Knox permanently. After that, Samsung Pay and Secure Folder stop working, and your warranty may be affected.
-A wrong flash can leave the phone in a bootloop or bricked. Most of these cases are recoverable with stock firmware, but lost IMEI and modem data are not, unless you backed them up first.
-Do not do this on your only phone.
-Know your device
+## Tools
 
-Community contributions are essential for improving compatibility and stability across devices and software versions. Android devices differ in screen resolution, Android version, hardware architecture and partition layout. Sometimes a single digit in a model number makes all the difference.
+Cyanogenator includes documentation for related tools used during the customization process.
 
-Research your device before following the instructions. Learn its specifics, check which modifications are compatible with it, and do not assume a procedure tested on one device works the same way on another.
+### DroidSky
 
-## Root and system modification
+DroidSky is a manager for the Cyanogenator customization project. It is still in an early stage and currently has a limited feature set. Its interface draws inspiration from TWRP, ClockworkMod Recovery (CWM) and the classic Holo UI.
 
-Some steps require root. One of the key pieces of this setup is Magisk with Zygisk enabled, which lets us install modules and apply modifications that are otherwise unavailable. I am currently on Magisk 30.7, so the instructions and examples follow that version. Modules can behave differently depending on your device, Android version and configuration. If you hit a compatibility problem or find a better solution, tell me.
+DroidSky follows the old Android tradition of dessert-themed release codenames. Version `0.1` is named **Alfajor**.
+
+### SUCy — Super Cyanify
+
+SUCy is a Bash-based command-line tool for Android device inspection and basic operations through ADB. Its current menu includes device information, partition listing, root checking, rebooting into Recovery or Download Mode, and normal reboot.
+
+The tool is still under development. Available operations depend on the connected device, its Android build and the permissions provided by the system. Consult the included manual before using the commands, especially those that restart the device.
 
 ## Contributing
 
-This project is my technical documentation of the tools, procedures and results I have personally worked with. I am sharing what I learned and leaving room for the community to test, troubleshoot, improve and expand it.
+The guide documents procedures and configurations I have worked with directly. Device-specific testing and corrections from other users can help extend compatibility beyond the reference setup.
 
-If you open an issue or a pull request, include your device model, Android version, ROM build and Magisk version. Without those, nobody can tell whether your result applies to anyone else.
+When reporting an issue or submitting a pull request, include the device model, Android version, ROM build, Magisk version and the relevant steps. Include command output or logs when they help explain the problem.
 
-Status
+Do not assume that a result on one device applies to another without testing.
 
-Stages 0 to 4 are written. The visual side keeps growing, and the next additions are sounds and the rest of the system apps.
+## Status
 
-License
+Stages 0 through 4 are documented. The customization is still evolving, with further work planned for system sounds and additional system applications.
 
-GPL-3.0, see LICENSE.
+DroidSky and SUCy are also under development and may change as their features and documentation are expanded.
+
+## License
+
+This project is licensed under **GPL-3.0**. See the `LICENSE` file for details.
