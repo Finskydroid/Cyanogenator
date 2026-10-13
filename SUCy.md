@@ -47,7 +47,7 @@ If a particular operation requires elevated privileges, run the tool accordingly
 
 ## Project status
 
-Super Cyanify is still a simple tool under development. Its current focus is device inspection and basic ADB operations, 
+Super Cyanify is still a simple tool under development, Its current focus is device inspection and basic ADB operations, 
 with room for additional diagnostic features as the project evolves.
 
 Super Cyanify is part of **Cyanogenator**, a project focused on bringing back the look and 
