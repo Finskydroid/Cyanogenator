@@ -1,9 +1,7 @@
 ## DroidSky
 
-**DroidSky** is a manager for the Cyanogenator customization project, designed around the look and feel of classic Android. It is a relatively new project and is still in its early stages, so its current feature set is fairly simple.
+DroidSky is a manager for the Cyanogenator customization project. It's still a small project, with a fairly simple set of features, and is being developed alongside the rest of the customization.
 
-The project takes inspiration from **TWRP** and the old **ClockworkMod Recovery (CWM)**, bringing elements of their visual identity into an interface built around Android's classic **Holo design language**.
+Its interface takes inspiration from **TWRP**, **ClockworkMod Recovery (CWM)** and the classic **Holo UI**, bringing back some of the visual style that defined older Android tools.
 
-DroidSky also follows the old Android tradition of naming releases after desserts. Version `0.1` carries the codename **Alfajor**, continuing a naming convention that was once a familiar part of Android's identity.
-
-The goal is to keep that older Android spirit alive while giving the Cyanogenator project its own tools and identity.
+The project also follows the old Android tradition of dessert codenames. Version `0.1` is called **Alfajor**, continuing a naming convention that was once common across the Android community.
