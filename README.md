@@ -8,6 +8,9 @@ Cyanogenator is a collection of instructions, tools and customizations for recre
 
 It is a customization project, not a custom ROM. The instructions use an existing Android system as their base.
 
+Contact?
+Discord: https://discord.gg/39aUekNR6Z
+
 ## Design
 
 The visual style combines elements from different Android generations. The boot animation comes from CyanogenMod 7, the icon style follows Lollipop, and the rest of the interface is customized around that direction.
