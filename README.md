@@ -8,8 +8,7 @@ Cyanogenator is a collection of instructions, tools and customizations for recre
 
 It is a customization project, not a custom ROM. The instructions use an existing Android system as their base.
 
-Contact?
-Discord: https://discord.gg/39aUekNR6Z
+Our Discord: https://discord.gg/39aUekNR6Z
 
 ## Design
 
